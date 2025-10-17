@@ -1,0 +1,8 @@
+a:visited {
+    color: darkgreen;
+}
+
+a:hover {
+    text-decoration: none;
+    color: chartreuse;
+}
