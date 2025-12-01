@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quetionário de Revisão - HTML CSS e JavaScript</title>
+</head>
+
+<body>
+
+
+    <!-- 1. HTML — Questões Teóricas 
+
+    1. O que significa a sigla HTML?
+
+    a) Hyperlinks and Text Markup Language
+   X b) HyperText Markup Language
+    c) Home Tool Markup Language
+    d) Hyper Transfer Markup Language
+
+
+    2. Qual tag é usada para criar um link?
+
+    a) <link>
+   X b) <href>
+    c) <a>
+    d) <p>
+
+    3. Qual tag deve ser usada para inserir uma imagem em uma página?
+
+   X a) <img>
+    b) <image>
+    c) <picture>
+    d) <src>
+
+    4. O atributo alt em imagens serve para:
+
+    a) Definir o tamanho
+   X b) Exibir texto alternativo se a imagem não carregar
+    c) Mudar a cor da imagem
+    d) Centralizar a imagem
+
+    5. Onde colocamos o conteúdo que aparece visualmente no site?
+
+    a) <html>
+    b) <head>
+   X c) <body>
+    d) <script>  -->
+
+    <!-- 🧪 Exercícios Práticos – HTML
+
+   Prática 1:
+
+    Crie uma página HTML com:
+    ● Um título principal
+    ● Um parágrafo explicando quem você é
+    ● Uma imagem (pode ser qualquer imagem)
+    ● Um link para um site de sua escolha -->
+
+    <h1>Quem sou eu?</h1>
+
+    <p>Olá, sou Itamar Correia, natural de Alagoas. Aos 18 anos de idade, tornei-me Servidor Público Federal. Ingressei
+        na Força Aérea Brasileira, em São José dos Campos - SP. Em seguida, fui transferido para O Centro de Lançamento
+        da Barreira do Inferno, em Parnamirim - RN. Há uma semana completei 60 anos de idade e 42 anos de serviço. Estou
+        aguardando minha aposentadoria. </p>
+
+
+    <img src="Leão2.jpg" alt="Leão descansando" width="200">
+
+    <br>
+    <a href="https://www.google.com">Site do Google</a>
+
+
+
+    <!-- Prática 2:
+
+    Crie uma página com uma lista não ordenada contendo pelo menos 5 itens sobre seus
+    hobbies. -->
+
+
+    <h2>Hobbies</h2>
+    <ul>
+        <li>Academia</li>
+        <li>Natação</li>
+        <li>Cozinhar</li>
+        <li>Estudar</li>
+        <li>Assistir MMA</li>
+    </ul>
+
+
+
+    <!-- 2. CSS — Questões Teóricas
+
+    6. Para inserir uma cor de fundo em CSS, usamos:
+   X a) background-color
+    b) color-background
+    c) bg-color
+    d) background
+
+    7. Qual seletor seleciona um elemento pelo id?
+   X a) .id
+    b) #id
+    c) id:
+    d) *id
+
+    8. Qual é a forma correta de aplicar CSS dentro do próprio arquivo HTML?
+   X a) <stylesheet>
+    b) <style>
+    c) <css>
+    d) <design>
+
+    9. Como estilizamos todas as tags <p> de uma página?
+   X a) #p {}
+    b) .p {}
+    c) p {}
+    d) paragraph {}
+
+    10. Para deixar um texto em negrito com CSS usamos:
+   X a) font-bold: true;
+    b) text-weight: bold;
+    c) font-weight: bold;
+    d) bold: yes; -->
+
+    <!-- Exercícios Práticos – CSS
+    Crie um arquivo CSS que:
+    ● Deixe o fundo da página azul claro
+    ● Deixe o texto dos parágrafos na cor preta
+    ● Aumente o tamanho do <h1> para 32px
+    ● Centralize o <h1> -->
+
+
+
+
+    <!-- Prática 3:
+
+    Crie um arquivo CSS que:
+    ● Deixe o fundo da página azul claro
+    ● Deixe o texto dos parágrafos na cor preta
+    ● Aumente o tamanho do <h1> para 32px
+    ● Centralize o <h1> -->
+
+
+
+
+
+
+
+
+
+    <!-- Prática 4:
+
+    Crie uma caixa estilizada usando CSS:
+    ● Fundo branco
+    ● Borda arredondada
+    ● Sombra
+    ● Um espaçamento interno (padding) de 20px -->
+
+
+
+
+    <!-- 3. JavaScript — Questões Teóricas
+
+    11. Para criar uma variável usamos:
+   X a) var, let ou const
+    b) int
+    c) number
+    d) variable
+
+    12. Qual operador é usado para soma em JavaScript?
+    a) -
+   X b) +
+    c) *
+    d) /
+
+    13. Arrays são usados para:
+
+    a) Criar funções
+   X b) Guardar vários valores em uma única variável
+    c) Escrever comentários
+    d) Somente números
+
+    14. Qual é a estrutura básica de um if?
+
+   X a) if () { }
+    b) if { } ()
+    c) if: { }
+    d) if = ()
+
+    15. Como escrevemos uma mensagem no console?
+
+    a) print()
+    b) console.write()
+   X c) console.log()
+    d) log.console() -->
+
+
+    <!-- Exercícios Práticos – JavaScript
+
+    Prática 5 – Variáveis
+
+    Crie um script que:
+    ● Crie duas variáveis: nome e idade
+    ● Mostre uma frase no console:
+    "Olá, meu nome é ___ e eu tenho ___ anos" -->
+
+    <script>
+
+        let nome = "Itamar"; /* prompt("Qual o seu nome"); */
+        let idade = 60; /* prompt("Qual a sua idade"); */
+
+        console.log("Olá, meu nome é" + nome + "e eu tenho" + idade + "anos");
+        console.log(`Olá, meu nome é ${nome} e eu tenho ${idade} anos`);
+
+
+    </script>
+
+
+    <!-- Prática 6 – IF / ELSE
+
+    Crie um script que pergunte a idade do usuário (prompt):
+    ● Se a idade for menor que 18, mostrar: “Você é menor de idade.”
+    ● Senão, mostrar: “Você é maior de idade.”
+
+    <script>
+
+    let idadeUsuário = Number(prompt(`Qual a sua idade?`));
+    if (idadeUsuario >= 18) {
+    console.log(`Você é maior de idade`);
+    } else {
+    console.log(`Você é menor de idade`);
+    }
+
+    </script>
+
+
+    Prática 7 – Arrays
+
+    Crie um array com 5 nomes.
+    Mostre no console:
+    ● O primeiro nome
+    ● O último nome
+    ● Quantos nomes tem o array
+
+    <script>
+
+    let nomes = ["Marcos", "Harrisson", "Loise", "Itamar", "Cleiton"];
+    console.log("Primeiro nome:", nomes[0]);
+    console.log("Último nome:", nomes[nomes.lenght - 1]);
+
+    </script>
+
+    
+
+
+    Prática 8 – Mini Desafio Completo
+
+    Monte uma página HTML com:
+    ✔ Um campo de input
+    ✔ Um botão “Adicionar”
+    ✔ Um parágrafo onde aparecem os itens adicionados
+    ✔ No JS:
+    ● Criar um array vazio
+    ● Toda vez que o botão for clicado, adicionar o valor do input no array
+    ● Mostrar o array atualizado na tela. -->
+
+
+
+
+</body>
+
+</html>

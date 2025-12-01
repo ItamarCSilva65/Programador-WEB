@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuação dos Exercícios</title>
+</head>
+<body>
+    
+
+
+
+
+    <!-- Prática 8 – Mini Desafio Completo
+
+    Monte uma página HTML com:
+    ✔ Um campo de input
+    ✔ Um botão “Adicionar”
+    ✔ Um parágrafo onde aparecem os itens adicionados
+    ✔ No JS:
+    ● Criar um array vazio
+    ● Toda vez que o botão for clicado, adicionar o valor do input no array
+    ● Mostrar o array atualizado na tela -->
+
+
+    <h2>Prática 8 – Mini Desafio Completo</h2>
+
+    <input type="text" Id="campo" placeholder="Digite algo">
+    <button onclick="adicionar()">Adicionar</button>
+
+    <p id="lista"></p>
+
+    <script>
+
+        let itens = [];
+
+        function adicionar () {
+            let valor = document.getElementById("campo").value;
+
+            if (valor === "") {
+                alert("Digite algo");
+                return;
+            }
+
+            itens.push(valor);
+
+            document.getElementById("lista").textContent = itens.join(", ");
+
+            document.getElementById("campo").value = "";
+        }
+    </script>
+
+</body>
+</html>
