@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Doguinhos 🐶</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0e7ff; /* Fundo azul suave */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* O Cartão */
+        .card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 350px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #3730a3;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        /* A Imagem */
+        #foto-container {
+            width: 100%;
+            height: 300px;
+            background-color: #f3f4f6;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #foto {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que a imagem preencha o quadrado sem distorcer */
+            display: block;
+        }
+
+        /* O Botão */
+        button {
+            margin-top: 1.5rem;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #4338ca;
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(79, 70, 229, 0.4);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>Doguinho do Dia 🐶</h1>
+        
+        <div id="foto-container">
+            <img id="foto" src="" alt="Foto de um cachorro fofo">
+        </div>
+
+        <button onclick="gerar()">Gerar novo cachorro</button>
+    </div>
+
+    <script>
+        function gerar() {
+            const img = document.getElementById("foto");
+            
+            // Efeito visual de carregamento (opcional, diminui opacidade enquanto carrega)
+            img.style.opacity = "0.5";
+
+            fetch("https://dog.ceo/api/breeds/image/random")
+                .then(res => res.json())
+                .then(data => {
+                    img.src = data.message;
+                    // Restaura opacidade quando a imagem carrega
+                    img.onload = () => {
+                        img.style.opacity = "1";
+                    }
+                })
+                .catch(err => console.error("Erro ao buscar cachorro:", err));
+        }
+
+        // Gera um cachorro automaticamente ao abrir a página
+        window.onload = gerar;
+    </script>
+</body>
+
+</html>

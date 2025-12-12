@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatos Sobre Gatos 🐱</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fdf2f8; /* Fundo rosa claro */
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #be185d; /* Rosa escuro */
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Área do texto do fato */
+        #fatos {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.6;
+            min-height: 80px; /* Garante altura mínima para não pular */
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        button {
+            background-color: #db2777; /* Botão rosa */
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(219, 39, 119, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #be185d;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>Você sabia? 🐱</h1>
+        
+        <p id="fatos">Clique no botão para descobrir uma curiosidade!</p>
+
+        <button onclick="gerar()">Gerar Fato Curioso</button>
+    </div>
+
+    <script>
+        function gerar() {
+            const textoElemento = document.getElementById("fatos");
+            
+            // Texto de carregamento enquanto busca
+            textoElemento.innerText = "Buscando curiosidade...";
+
+            fetch("https://catfact.ninja/fact")
+                .then(res => res.json())
+                .then(data => {
+                    // CORREÇÃO 2: Usar .innerText em vez de .src
+                    textoElemento.innerText = `"${data.fact}"`;
+                })
+                .catch(err => {
+                    console.error("Erro:", err);
+                    textoElemento.innerText = "Ops! O gato comeu o fato. Tente de novo.";
+                });
+        }
+        
+        // Gera um fato ao carregar a página
+        window.onload = gerar;
+    </script>
+</body>
+
+</html>

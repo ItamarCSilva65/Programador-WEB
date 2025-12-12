@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST FUNCIONANDO</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 600px; }
+        input { display: block; width: 100%; padding: 8px; margin: 10px 0; }
+        button { padding: 10px 15px; cursor: pointer; }
+        pre { background: #eee; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    
+    <h1>Teste de POST (Garantido)</h1>
+
+    <input id="titulo" placeholder="Digite o Título">
+    <input id="conteudo" placeholder="Digite o Conteúdo">
+
+    <button onclick="enviar()">Enviar POST</button>
+
+    <pre id="saida">Resultado aparecerá aqui...</pre>
+
+    <script>
+        async function enviar() {
+            const titulo = document.getElementById("titulo").value;
+            const conteudo = document.getElementById("conteudo").value;
+
+            const respostaEl = document.getElementById("saida");
+
+            try {
+                const res = await fetch("https://jsonplaaceholder.typicode.com/posts", {
+                    method: "POST",
+                    headers: {"Content.Type": "application/json"},
+                    body: JSN.stringify({
+                        title: título,
+                        body: conteudo,
+                        userId: i
+                    })
+                });
+
+                const data = await res.json();
+                respostaEl.innerText = JSON.stringify(data, null, 2);
+
+            } catch (e) {
+                respostaEl.innerText = "Erro ao enviar: " + e.message;
+            }
+        }
+    </script>
+        
+
+</body>
+</html>
