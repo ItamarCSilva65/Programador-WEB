@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro Inovador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Crie sua conta</h1>
+        <p>Preencha o formulário para acessar nossa plataforma.</p>
+    </header>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar" style="width: 25%;"></div>
+    </div>
+    <div class="step-indicators">
+        <span class="step-indicator active">1</span>
+        <span class="step-indicator">2</span>
+        <span class="step-indicator">3</span>
+        <span class="step-indicator">4</span>
+    </div>
+
+
+    <form id="regForm" novalidate>
+
+        <div class="form-step active-step" id="step1">
+            <h2>Dados Pessoais</h2>
+            <div class="input-group">
+                <label for="fullname">Nome Completo *</label>
+                <input type="text" id="fullname" name="fullname" required>
+                <span class="error-message">Por favor, insira seu nome completo.</span>
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message">Insira um e-mail válido.</span>
+            </div>
+            <div class="input-group">
+                <label for="phone">Telefone *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" required maxlength="15">
+                <span class="error-message">Insira um telefone válido (mínimo 10 dígitos).</span>
+            </div>
+            <div class="input-group">
+                <label for="dob">Data de Nascimento *</label>
+                <input type="date" id="dob" name="dob" required>
+                <span class="error-message">Data de nascimento é obrigatória.</span>
+            </div>
+        </div>
+
+        <div class="form-step" id="step2">
+            <h2>Endereço</h2>
+            <div class="input-group">
+                <label for="cep">CEP *</label>
+                <input type="text" id="cep" name="cep" placeholder="XXXXX-XXX" required maxlength="9">
+                <span class="error-message">CEP deve ter 8 dígitos.</span>
+            </div>
+            <div class="input-row">
+                <div class="input-group" style="flex: 2;">
+                    <label for="street">Logradouro *</label>
+                    <input type="text" id="street" name="street" required>
+                    <span class="error-message">Campo obrigatório.</span>
+                </div>
+                <div class="input-group" style="flex: 1;">
+                    <label for="number">Número *</label>
+                    <input type="text" id="number" name="number" required>
+                    <span class="error-message">Obrigatório.</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="neighborhood">Bairro *</label>
+                <input type="text" id="neighborhood" name="neighborhood" required>
+                <span class="error-message">Campo obrigatório.</span>
+            </div>
+             <div class="input-row">
+                 <div class="input-group" style="flex: 2;">
+                     <label for="city">Cidade *</label>
+                     <input type="text" id="city" name="city" required>
+                     <span class="error-message">Campo obrigatório.</span>
+                 </div>
+                 <div class="input-group" style="flex: 1;">
+                    <label for="state">Estado *</label>
+                    <select id="state" name="state" required>
+                        <option value="">Selecione</option>
+                        <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option><option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option><option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option><option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option><option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option><option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option><option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option><option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option><option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+                    </select>
+                    <span class="error-message">Selecione um estado.</span>
+                 </div>
+             </div>
+            <div class="input-group">
+                <label for="complement">Complemento (Opcional)</label>
+                <input type="text" id="complement" name="complement">
+            </div>
+        </div>
+
+        <div class="form-step" id="step3">
+            <h2>Perfil Profissional</h2>
+            <div class="input-group">
+                <label for="profession">Profissão *</label>
+                <input type="text" id="profession" name="profession" required>
+                <span class="error-message">Campo obrigatório.</span>
+            </div>
+            <div class="input-group">
+                <label for="company">Empresa (Opcional)</label>
+                <input type="text" id="company" name="company">
+            </div>
+            <div class="input-group">
+                <label for="interests">Áreas de Interesse (Segure Ctrl/Cmd para múltipla seleção) *</label>
+                <select id="interests" name="interests" multiple size="5" required>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="design">Design</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="negocios">Negócios</option>
+                    <option value="financas">Finanças</option>
+                    <option value="saude">Saúde</option>
+                </select>
+                <span class="error-message">Selecione pelo menos uma área.</span>
+            </div>
+             <div class="input-group">
+                <label for="about">Sobre você (Opcional)</label>
+                <textarea id="about" name="about" rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="form-step" id="step4">
+            <h2>Confirme seus dados</h2>
+            <p>Verifique se as informações abaixo estão corretas antes de finalizar.</p>
+
+            <div class="summary-box">
+                <h3>Dados Pessoais</h3>
+                <p><strong>Nome:</strong> <span id="sum-fullname"></span></p>
+                <p><strong>E-mail:</strong> <span id="sum-email"></span></p>
+                <p><strong>Telefone:</strong> <span id="sum-phone"></span></p>
+                <p><strong>Nascimento:</strong> <span id="sum-dob"></span></p>
+            </div>
+
+             <div class="summary-box">
+                <h3>Endereço</h3>
+                 <p><span id="sum-address"></span></p>
+                 <p id="sum-complement-row"><strong>Complemento:</strong> <span id="sum-complement"></span></p>
+            </div>
+
+             <div class="summary-box">
+                <h3>Perfil</h3>
+                <p><strong>Profissão:</strong> <span id="sum-profession"></span></p>
+                <p><strong>Empresa:</strong> <span id="sum-company"></span></p>
+                <p><strong>Interesses:</strong> <span id="sum-interests"></span></p>
+            </div>
+        </div>
+
+        <div id="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+            <p>Enviando cadastro...</p>
+        </div>
+
+        <div id="success-message" style="display: none;">
+             <div class="success-icon">✓</div>
+             <h2>Cadastro realizado com sucesso!</h2>
+             <p>Obrigado por se juntar a nós.</p>
+        </div>
+
+
+        <div class="form-navigation" id="form-navigation">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Próximo</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

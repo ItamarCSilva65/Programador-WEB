@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testador de API POST</title>
+    <style>
+        /* Reset e Fontes */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Container Principal (Card) */
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        /* Formulário */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Importante para o padding não quebrar o layout */
+            transition: border-color 0.2s;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Botão */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #10b981; /* Verde sucesso */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #059669;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button:disabled {
+            background-color: #a7f3d0;
+            cursor: not-allowed;
+        }
+
+        /* Área de Resposta (Terminal style) */
+        .output-area {
+            margin-top: 1.5rem;
+            background-color: #1e293b; /* Fundo escuro */
+            color: #a5b4fc; /* Texto claro */
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Quebra linha se necessário */
+            border-left: 5px solid #6366f1;
+            min-height: 50px;
+        }
+
+        .status-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Novo Post 🚀</h1>
+
+        <div class="form-group">
+            <label for="titulo">Título do Post</label>
+            <input type="text" id="titulo" placeholder="Ex: Aprender JavaScript">
+        </div>
+
+        <div class="form-group">
+            <label for="conteudo">Conteúdo</label>
+            <textarea id="conteudo" placeholder="Digite o conteúdo do seu artigo aqui..."></textarea>
+        </div>
+
+        <button id="btnEnviar" onclick="enviar()">Enviar Dados</button>
+
+        <div class="output-area">
+            <span class="status-label">Resposta da API:</span>
+            <span id="saida">Aguardando envio...</span>
+        </div>
+    </div>
+
+    <script>
+        async function enviar() {
+            const titulo = document.getElementById("titulo").value;
+            const conteudo = document.getElementById("conteudo").value;
+            const saida = document.getElementById("saida");
+            const btn = document.getElementById("btnEnviar");
+
+            // Validação simples
+            if(!titulo || !conteudo) {
+                alert("Por favor, preencha todos os campos!");
+                return;
+            }
+
+            // UX: Feedback de carregamento
+            saida.innerText = "Enviando dados para o servidor...";
+            btn.disabled = true;
+            btn.innerText = "Enviando...";
+
+            try {
+                // CORREÇÃO: URL estava com "plaaceholder" (2 'a's)
+                const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+                    method: "POST",
+                    // CORREÇÃO: Era "Content.Type" (ponto), o certo é "Content-Type" (hífen)
+                    headers: { "Content-Type": "application/json" },
+                    // CORREÇÃO: Era JSN, o certo é JSON. Título não tinha acento na variável. userId corrigido para 1.
+                    body: JSON.stringify({
+                        title: titulo,
+                        body: conteudo,
+                        userId: 1
+                    })
+                });
+
+                const data = await res.json();
+                
+                // Formata o JSON bonito para exibição
+                saida.innerText = JSON.stringify(data, null, 2);
+                saida.style.color = "#4ade80"; // Verde claro para sucesso
+
+            } catch (e) {
+                saida.innerText = "Erro ao conectar: " + e.message;
+                saida.style.color = "#f87171"; // Vermelho claro para erro
+            } finally {
+                // Reabilita o botão
+                btn.disabled = false;
+                btn.innerText = "Enviar Dados";
+            }
+        }
+    </script>
+
+</body>
+</html>
